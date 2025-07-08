@@ -121,15 +121,9 @@ Input may optionally contain spaces between bytes."
   (should (equal (decode-evt30 "c481") '("TH" . #x1c4)))
   )
 
-;; wrapper
-(defun my-hex-decode-fn (hex-string)
-  (decode-evt30 hex-string)
-  )
 
 ;; main function that parse the buffer to highlight
-(defun evt-highlight-hex-blocks ()
-  "Parcourt le buffer et applique une coloration de fond aux blocs de 8 octets."
-  (interactive)
+(defun evt-highlight-hex-blocks (decode-fct evt-size-in-bytes)
   (save-excursion
     ;;(goto-char (point-min))
     (let ((case-fold-search nil))
@@ -148,14 +142,18 @@ Input may optionally contain spaces between bytes."
               (end (match-end 1)))
           (save-excursion
             (goto-char start)
-            ;; Découpage en blocs de 4 octets
-            (dotimes (i 8)
-              (let* ((event-str-search
-                      (re-search-forward (concat "\\(" hex-digit-byte "\\{2\\}" "\\)")))
+            ;; Découpage en 8 blocs de 4 octets - evt3
+            ;; (dotimes (i 8)
+
+            ;; Découpage en 2 blocs de 8 octets - evt2.1
+            (dotimes (i (/ 16 evt-size-in-bytes))
+	      (let* ((event-str-search
+                      ;; (re-search-forward (concat "\\(" hex-digit-byte "\\{2\\}" "\\)")))
+                      (re-search-forward (concat "\\(" hex-digit-byte "\\{" (format "%d" evt-size-in-bytes) "\\}" "\\)")))
                      (block-start (match-beginning 1))
                      (block-end (match-end 1))
                      (hex-block (buffer-substring-no-properties block-start block-end))
-                     (type-value (my-hex-decode-fn hex-block))
+                     (type-value (funcall decode-fct hex-block))
                      (type (car type-value))
                      (face-color (or (cdr (assoc type hex-dump-highlight-colors)) "darkgray"))
                      (decoded-content (format "%-4s" type))
@@ -171,5 +169,19 @@ Input may optionally contain spaces between bytes."
                     (overlay-put ov 'help-echo decoded-content))))))))))
     )
   )
+
+
+(defun evt21-highlight-hex-blocks ()
+  "Parcourt le buffer et applique une coloration de fond aux blocs de 8 octets."
+  (interactive)
+  (evt-highlight-hex-blocks 'decode-evt21 8)
+  )
+
+(defun evt3-highlight-hex-blocks ()
+  "Parcourt le buffer et applique une coloration de fond aux blocs de 8 octets."
+  (interactive)
+  (evt-highlight-hex-blocks 'decode-evt30 2)
+  )
+
 
 (provide 'evt-decoder)

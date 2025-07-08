@@ -21,7 +21,7 @@
      ("asm" . "*.[sS]")))
  '(lsp-clangd-binary-path "/usr/bin/clangd")
  '(package-selected-packages
-   '(bash-completion vlf use-package abyss-theme lsp-mode seq magit))
+   '(nhexl-mode bash-completion vlf use-package abyss-theme lsp-mode seq magit))
  '(warning-suppress-types '((comp) (comp))))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
@@ -29,6 +29,19 @@
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
  )
+
+
+;; ==========================
+;; package
+;; ==========================
+
+;; packages
+(setq package-archives '(
+;;;                         ("melpa-stable" . "http://stable.melpa.org/packages/")
+                         ("melpa" . "https://melpa.org/packages/")
+                         ("gnu" . "http://elpa.gnu.org/packages/")
+                         )
+      )
 
 
 ;; fix
@@ -85,6 +98,7 @@
 ;; ==========================
 
 ;; theme
+(require 'abyss-theme)
 (abyss-theme)
 
 
@@ -105,6 +119,8 @@
 ;; get line number everywhere
 (global-display-line-numbers-mode)
 
+;; tips
+(put 'erase-buffer 'disabled nil)
 
 ;; ==========================
 ;; lsp mode
@@ -126,23 +142,6 @@
              )
     )
 
-
-;; ==========================
-;; package
-;; ==========================
-
-;; packages
-(setq package-archives '(
-;;;                         ("melpa-stable" . "http://stable.melpa.org/packages/")
-                         ("melpa" . "https://melpa.org/packages/")
-                         ("gnu" . "http://elpa.gnu.org/packages/")
-                         )
-      )
-
-(put 'erase-buffer 'disabled nil)
-
-
-
 ;; ==========================
 ;; C++ ide
 ;; ==========================
@@ -156,6 +155,7 @@
 ;; ==========================
 (add-to-list 'load-path "/home/psee/.emacs.d/lisp")
 (require 'evt-decoder)
+(require 'nhexl-mode)
 
 
 ;; ==========================
