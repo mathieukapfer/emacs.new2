@@ -14,8 +14,7 @@
      ("tex" . "*.tex") ("texi" . "*.texi") ("asm" . "*.[sS]")))
  '(lsp-clangd-binary-path "/usr/bin/clangd")
  '(package-selected-packages
-   '(abyss-theme bash-completion lsp-mode magit nhexl-mode python-mode
-		 seq use-package vlf yaml-imenu ztree))
+   '(use-package abyss-theme bash-completion editorconfig editorconfig-generate lsp-mode magit nhexl-mode python-mode seq vlf yaml-imenu yasnippet ztree)
  '(warning-suppress-types '((comp) (comp))))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
@@ -183,3 +182,9 @@
 (use-package ztree
   :ensure t) ; needs GNU diff utility
    
+;; Code spacing
+;; ==========================
+(use-package editorconfig
+  :ensure t
+  :config
+  (editorconfig-mode 1))
