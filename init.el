@@ -14,7 +14,7 @@
      ("tex" . "*.tex") ("texi" . "*.texi") ("asm" . "*.[sS]")))
  '(lsp-clangd-binary-path "/usr/bin/clangd")
  '(package-selected-packages
-   '(use-package abyss-theme bash-completion editorconfig editorconfig-generate lsp-mode magit nhexl-mode python-mode seq vlf yaml-imenu yasnippet ztree)
+   '(use-package abyss-theme bash-completion editorconfig editorconfig-generate lsp-mode magit nhexl-mode python-mode seq vlf yaml-imenu yasnippet ztree))
  '(warning-suppress-types '((comp) (comp))))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
