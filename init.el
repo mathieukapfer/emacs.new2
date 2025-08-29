@@ -13,8 +13,13 @@
      ("l" . "[Cc]hange[Ll]og*") ("m" . "[Mm]akefile*")
      ("tex" . "*.tex") ("texi" . "*.texi") ("asm" . "*.[sS]")))
  '(lsp-clangd-binary-path "/usr/bin/clangd")
+ '(magit-blame-styles
+   '((margin (margin-format " %a" " %C" " %s%f" " %h")
+	     (margin-width . 22) (margin-face . magit-blame-margin)
+	     (margin-body-face magit-blame-dimmed))
+     (lines (show-lines . t) (show-message . t))))
  '(package-selected-packages
-   '(use-package abyss-theme bash-completion editorconfig editorconfig-generate lsp-mode magit nhexl-mode python-mode seq vlf yaml-imenu yasnippet ztree))
+   '(use-package abyss-theme bash-completion editorconfig editorconfig-generate lsp-mode magit nhexl-mode python-mode kotlin-mode seq vlf yaml-imenu yasnippet ztree))
  '(warning-suppress-types '((comp) (comp))))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
