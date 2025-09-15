@@ -66,7 +66,7 @@
   (find-file "~/.emacs.d/init.el")
   ;;(switch-to-buffer "init.el" )
   )
-(global-set-key (kbd "C-<f1>") 'switch-to-buffer-emacs)
+(global-set-key (kbd "C-<f2>") 'switch-to-buffer-emacs)
 
 ;; window split helper in french keyboard
 (global-set-key (kbd "M-œ")  'delete-window)
@@ -93,7 +93,7 @@
 (global-set-key (kbd "C-z") 'undo)
 
 ;; magit short cut
-(global-set-key (kbd "C-<escape>") 'magit-status)
+(global-set-key (kbd "C-<f1>") 'magit-status)
 
 
 (defun dired-sources-file ()
@@ -189,7 +189,7 @@
    
 ;; Code spacing
 ;; ==========================
-(use-package editorconfig
-  :ensure t
-  :config
-  (editorconfig-mode 1))
+;(use-package editorconfig
+;  :ensure t
+;  :config
+;  (editorconfig-mode 1))
