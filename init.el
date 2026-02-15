@@ -6,18 +6,29 @@
  '(dired-listing-switches "-alh")
  '(dired-omit-files "^\\.?#\\|^\\.$\\|^\\.[^.]")
  '(grep-files-aliases
-   '(("all" . "* .*") ("el" . "*.el") ("ch" . "*.[ch] *.cpp")
-     ("c" . "*.c") ("cc" . "*.cc *.cxx *.cpp *.C *.CC *.c++")
+   '(("all" . "* .*")
+     ("el" . "*.el")
+     ("ch" . "*.[ch] *.cpp")
+     ("c" . "*.c")
+     ("cc" . "*.cc *.cxx *.cpp *.C *.CC *.c++")
      ("cchh" . "*.cc *.[ch]xx *.[ch]pp *.[CHh] *.CC *.HH *.[ch]++")
-     ("hh" . "*.hxx *.hpp *.[Hh] *.HH *.h++") ("h" . "*.h")
-     ("l" . "[Cc]hange[Ll]og*") ("m" . "[Mm]akefile*")
-     ("tex" . "*.tex") ("texi" . "*.texi") ("asm" . "*.[sS]")))
+     ("hh" . "*.hxx *.hpp *.[Hh] *.HH *.h++")
+     ("h" . "*.h")
+     ("l" . "[Cc]hange[Ll]og*")
+     ("m" . "[Mm]akefile*")
+     ("tex" . "*.tex")
+     ("texi" . "*.texi")
+     ("asm" . "*.[sS]")))
  '(lsp-clangd-binary-path "/usr/bin/clangd")
  '(magit-blame-styles
-   '((margin (margin-format " %a" " %C" " %s%f" " %h")
-	     (margin-width . 22) (margin-face . magit-blame-margin)
-	     (margin-body-face magit-blame-dimmed))
-     (lines (show-lines . t) (show-message . t))))
+   '((margin
+      (margin-format " %a" " %C" " %s%f" " %h")
+      (margin-width . 22)
+      (margin-face . magit-blame-margin)
+      (margin-body-face magit-blame-dimmed))
+     (lines
+      (show-lines . t)
+      (show-message . t))))
  '(package-selected-packages
    '(use-package abyss-theme bash-completion editorconfig editorconfig-generate lsp-mode magit nhexl-mode python-mode kotlin-mode seq vlf yaml-imenu yasnippet ztree))
  '(warning-suppress-types '((comp) (comp))))
@@ -55,6 +66,9 @@
 
 ;; fix
 (setq package-install-upgrade-built-in t)
+
+;; instal selected package
+(package-install-selected-packages t)
 
 ;; edit init.el
 
@@ -107,8 +121,10 @@
 ;; ==========================
 
 ;; theme
-(require 'abyss-theme)
-(abyss-theme)
+(use-package abyss-theme
+  :ensure t
+  (abyss-theme)
+  )
 
 
 ;; dired
